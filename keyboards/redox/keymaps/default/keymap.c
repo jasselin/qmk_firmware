@@ -41,6 +41,7 @@ enum custom_keycodes {
 #define WND_LF    LGUI(KC_LEFT)
 #define WND_RG    LGUI(KC_RIGHT)
 #define WND_DSK   LGUI(KC_TAB)
+#define SPC_MED   LT(_MEDIA, KC_SPC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -50,11 +51,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_TAB  ,KC_Q    ,KC_W    ,KC_E    ,KC_R    ,KC_T    ,KC_6    ,                          KC_7    ,KC_Y    ,KC_U    ,KC_I    ,KC_O    ,KC_P    ,KC_BSLS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_ESC  ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,KC_NO   ,                          KC_NO   ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,OSL(_ACCENTS)
+     CTL_ESC ,KC_A    ,KC_S    ,KC_D    ,KC_F    ,KC_G    ,KC_NO   ,                          KC_NO   ,KC_H    ,KC_J    ,KC_K    ,KC_L    ,KC_SCLN ,OSL(_ACCENTS),
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_LSFT ,KC_Z    ,KC_X    ,KC_C    ,KC_V    ,KC_B    ,CS_M    ,KC_DEL  ,        KC_DEL  ,CS_O    ,KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,KC_RSFT ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     KC_LCTL ,KC_LGUI ,KC_NO   ,KC_LALT ,     MO(_FN) ,    KC_BSPC ,KC_ENT  ,        KC_ENT  ,KC_SPC  ,    MO(_SYMWM),  KC_NO    ,KC_NO   ,KC_RGUI ,KC_NO 
+     KC_LCTL ,KC_LGUI ,KC_NO   ,KC_LALT ,     MO(_FN) ,    SPC_MED ,KC_ENT  ,        KC_ENT  ,KC_SPC  ,    MO(_SYMWM),  KC_NO    ,KC_NO   ,KC_RGUI ,KC_NO 
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
   [_ACCENTS] = LAYOUT(
@@ -69,21 +70,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX 
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
-  )
+  ),
   [_FN] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      LALT(KC_F4),KC_F1,KC_F2   ,KC_F3   ,KC_F4   ,KC_F5   ,                                            KC_F8   ,KC_F9   ,KC_F10  ,KC_F11  ,KC_F12  ,KC_PSCR ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,LCTL(KC_F4),WND_UP ,XXXXXXX ,XXXXXXX ,KC_F6   ,                          KC_F7   ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     XXXXXXX ,XXXXXXX ,LCTL(KC_F4),WND_UP ,LCTL(KC_F5),XXXXXXX ,KC_F6   ,                          KC_F7 ,KC_HOME ,KC_PGDN ,KC_PGUP ,KC_END  ,XXXXXXX ,KC_PAUS ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,SCR_LF  ,WND_LF  ,WND_DW  ,WND_RG  ,SCR_RG  ,XXXXXXX ,                          XXXXXXX ,KC_LEFT ,KC_DOWN ,KC_UP   ,KC_RIGHT,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,CW_LF   ,WND_DSK  ,CW_RG  ,XXXXXXX ,_______ ,XXXXXXX ,        XXXXXXX ,_______ ,KC_WBAK ,KC_WFWD ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     XXXXXXX ,XXXXXXX ,CW_LF   ,WND_DSK  ,CW_RG  ,XXXXXXX ,_______ ,XXXXXXX ,        XXXXXXX ,_______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX 
+     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    KC_WBAK ,     KC_WFWD ,XXXXXXX ,XXXXXXX ,XXXXXXX 
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
   ),
-  [_SYMWM] = LAYOUT(,
+  [_SYMWM] = LAYOUT(
   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
      LALT(KC_F4) ,XXXXXXX ,RALT(KC_2) ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                     XXXXXXX ,XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -91,12 +92,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,HYPR(KC_A) ,HYPR(KC_S) ,HYPR(KC_D) ,HYPR(KC_F) ,HYPR(KC_G) ,XXXXXXX ,           XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-     XXXXXXX ,HYPR(KC_Z) ,HYPR(KC_X) ,HYPR(KC_C)  ,HYPR(KC_V) ,HYPR(KC_B) ,_______  ,XXXXXXX ,XXXXXXX ,_______ ,HYPR(KC_M) ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+     XXXXXXX ,HYPR(KC_Z) ,HYPR(KC_X) ,HYPR(KC_C) ,HYPR(KC_V) ,HYPR(KC_B) ,_______, XXXXXXX ,XXXXXXX ,_______ , XXXXXXX ,HYPR(KC_M) ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX,
   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX 
   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
-  )
-//   [_EMPTY] = LAYOUT(,
+  ),
+   [_MEDIA] = LAYOUT(
+   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_MUTE ,                                            XXXXXXX ,XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_VOLU ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┤                         ├────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_VOLD ,XXXXXXX ,                          XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┐       ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,KC_MPRV ,KC_MNXT ,KC_MPLY ,_______ ,XXXXXXX ,        XXXXXXX ,_______ ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
+   //├────────┼────────┼────────┼────────┼────┬───┴────┬───┼────────┼────────┤       ├────────┼────────┼───┬────┴───┬────┼────────┼────────┼────────┼────────┤
+      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,     XXXXXXX ,    XXXXXXX ,XXXXXXX ,        XXXXXXX ,XXXXXXX ,    XXXXXXX ,     XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX 
+   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
+   )
+//   [_EMPTY] = LAYOUT(
 //   //┌────────┬────────┬────────┬────────┬────────┬────────┐                                           ┌────────┬────────┬────────┬────────┬────────┬────────┐
 //      XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,                                            XXXXXXX ,XXXXXXX  ,XXXXXXX ,XXXXXXX ,XXXXXXX ,XXXXXXX ,
 //   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐                         ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
@@ -110,3 +124,54 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //   //└────────┴────────┴────────┴────────┘    └────────┘   └────────┴────────┘       └────────┴────────┘   └────────┘    └────────┴────────┴────────┴────────┘
 //   )
 };
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (record->event.pressed) {
+    //bool shiftPressed = (keyboard_report->mods & MOD_BIT (KC_LSFT)) || (keyboard_report->mods & MOD_BIT (KC_RSFT));
+    // set_timelog();
+    switch (keycode) {
+        case ACC_AGRV:
+            SEND_STRING(SS_TAP(X_QUOTE) SS_DELAY(100) SS_TAP(X_A));
+        break;
+        case ACC_ACRC:
+            SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(100) SS_TAP(X_A));
+        break;
+        case ACC_EGRV:
+            SEND_STRING(SS_TAP(X_QUOTE) SS_DELAY(100) SS_TAP(X_E));
+        break;
+        case ACC_ECRC:
+            SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(100) SS_TAP(X_E));
+        break;
+        case ACC_CCED:
+            /*if (shiftPressed) {
+                SEND_STRING(SS_TAP(X_RBRACKET) SS_DELAY(100) SS_TAP(X_C));
+            }
+            else {*/
+                SEND_STRING(SS_TAP(X_RBRACKET) SS_DELAY(100) SS_TAP(X_C));
+            //}
+        break;
+        case ACC_UCRC:
+            SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(100) SS_TAP(X_U));
+        break;
+        case ACC_UGRV:
+            SEND_STRING(SS_TAP(X_QUOTE) SS_DELAY(100) SS_TAP(X_U));
+        break;
+        case ACC_UTRM:
+            SEND_STRING(SS_RSFT(SS_TAP(X_RBRACKET)) SS_DELAY(100) SS_TAP(X_U));
+        break;
+        case ACC_ICRC:
+            SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(100) SS_TAP(X_I));
+        break;
+        case ACC_ITRM:
+            SEND_STRING(SS_RSFT(SS_TAP(X_RBRACKET)) SS_DELAY(100) SS_TAP(X_I));
+        break;
+        case ACC_OCRC:
+            SEND_STRING(SS_TAP(X_LBRACKET) SS_DELAY(100) SS_TAP(X_O));
+        break;
+        case ACC_OTRM:
+            SEND_STRING(SS_RSFT(SS_TAP(X_RBRACKET)) SS_DELAY(100) SS_TAP(X_O));
+        break;
+    }
+  }
+  return true;
+}
