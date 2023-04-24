@@ -105,7 +105,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______,  _______,  WM_SSMS,  WM_WORD,  WM_OUTL,  WM_RDP,   WM_TEAMS,  _______,  _______,  _______,  _______,  _______,  SM_LBRC,  SM_RBRC,   _______,            _______,
         _______,  _______,  WM_ANTI,  WM_SPOT,  WM_TODO,  WM_FORK,  WM_EDGE,   _______,  _______,  _______,  _______,  SM_LCBR,  SM_RCBR,             _______,            _______,
         _______,  _______,            WM_SHRT,  WM_EXCL,  WM_VSC,   WM_VS,     WM_CHRM,  _______,  _______,  _______,  _______,  _______,   _______,  _______,  _______,  
-        QK_BOOTLOADER,  _______,  _______,            _______,  _______,  _______,                       _______,            _______,                       _______,  _______,  _______),
+        QK_BOOTLOADER,  _______,  _______,            _______,  _______,  _______,                       _______,            _______,                 _______,  _______,  _______),
 };
 
 #if defined(ENCODER_ENABLE) && defined(ENCODER_MAP_ENABLE)
